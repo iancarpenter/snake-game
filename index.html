@@ -3,13 +3,29 @@
 <head>
     <title>Classic Snake Game</title>
     <style>
+        /* Style for the game container */
+        #game-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: lightgreen; /* Match the game's background color */
+            
+        }
+
+        /* Style for the game canvas */
         #game {
-            background-color: #000;
+            background-color: lightgreen; /* Match the game's background color */
+            border: 10px solid black;
         }
     </style>
 </head>
 <body>
-    <canvas id="game" width="512" height="512"></canvas>
+    <!-- Wrap the canvas in a div -->
+    <div id="game-container">
+        <canvas id="game" width="512" height="512"></canvas>
+        <div id="score">Score: 0</div>
+    </div>
     <script src="snake.js"></script>
 </body>
 </html>

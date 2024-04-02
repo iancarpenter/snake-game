@@ -3,6 +3,8 @@ let canvas = document.getElementById('game');
 // Get the 2D rendering context for the canvas
 let context = canvas.getContext('2d');
 
+let score = 0;
+
 // Define the size of each square in the grid
 let box = 32;
 // Initialize the snake as an array with one element
@@ -77,12 +79,16 @@ function startGame() {
     if (direction == "up") snakeY -= box;
     if (direction == "down") snakeY += box;
 
-    // If the snake eats the food, it grows and new food is created
+    // If the snake eats the food, it grows, new food is created, and the score increases
     if (snakeX != food.x || snakeY != food.y) {
         snake.pop(); // Remove the tail
     } else {
         food.x = Math.floor(Math.random() * 15 + 1) * box;
         food.y = Math.floor(Math.random() * 15 + 1) * box;
+        score++; // Increase the score
+
+        // Update the score display
+        document.getElementById('score').innerText = 'Score: ' + score;
     }
 
     // Create new head and add it to the beginning of the snake
@@ -92,6 +98,9 @@ function startGame() {
     }
 
     snake.unshift(newHead);
+
+    // Draw the score
+    drawScore();
 }
 
 // Start the game loop
